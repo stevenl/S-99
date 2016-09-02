@@ -23,4 +23,15 @@ object Lists {
     if (!list.isEmpty) list.init.last
     else throw new NoSuchElementException
   }
+
+  // P03 (*) Find the Kth element of a list.
+  def nth[A](n: Int, list: List[A]): A = {
+    if (list.isEmpty || n < 0) throw new NoSuchElementException
+    else if (n == 0) list.head
+    else nth(n -1, list.tail)
+  }
+  def nth1[A](n: Int, list: List[A]): A = {
+    if (0 <= n && n < list.length) list(n)
+    else throw new NoSuchElementException
+  }
 }

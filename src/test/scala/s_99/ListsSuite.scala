@@ -28,4 +28,19 @@ class ListsSuite extends FreeSpec {
       assertThrows[NoSuchElementException] { penultimate(List(1)) }
     }
   }
+
+  "nth()" - {
+    "should return the first element if n is 0" in {
+      assert(nth(0, List(1, 2, 3)) == 1)
+    }
+    "should return the nth element" in {
+      assert(nth(2, List(1, 2, 3)) == 3)
+    }
+    "should throw when n is negative" in {
+      assertThrows[NoSuchElementException] { nth(-1, List(1)) }
+    }
+    "should throw when list is shorter than n - 1" in {
+      assertThrows[NoSuchElementException] { nth(3, List(1, 2, 3)) }
+    }
+  }
 }

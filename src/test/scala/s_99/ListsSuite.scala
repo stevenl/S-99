@@ -16,4 +16,16 @@ class ListsSuite extends FreeSpec {
       assert(last(List(5)) == 5)
     }
   }
+
+  "penultimate()" - {
+    "should return second last element if multiple elements" in {
+      assert(penultimate(List(1, 2, 3, 4, 5)) == 4)
+    }
+    "should throw when no elements" in {
+      assertThrows[NoSuchElementException] { penultimate(List()) }
+    }
+    "should throw when 1 element" in {
+      assertThrows[NoSuchElementException] { penultimate(List(1)) }
+    }
+  }
 }

@@ -34,4 +34,11 @@ object Lists {
     if (0 <= n && n < list.length) list(n)
     else throw new NoSuchElementException
   }
+
+  // P04 (*) Find the number of elements of a list.
+  def length[A](list: List[A]): Int = list match {
+    case Nil       => 0
+    case _ :: tail => 1 + length(tail)
+  }
+  def length1[A](list: List[A]): Int = list.length
 }

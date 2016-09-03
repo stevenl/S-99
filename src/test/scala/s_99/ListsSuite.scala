@@ -43,4 +43,13 @@ class ListsSuite extends FreeSpec {
       assertThrows[NoSuchElementException] { nth(3, List(1, 2, 3)) }
     }
   }
+
+  "length()" - {
+    "should return 0 for an empty list" in {
+      assert(length(List()) == 0)
+    }
+    "should return the number of elements in the list" in {
+      assert(length(List(1, 2, 3)) == 3)
+    }
+  }
 }

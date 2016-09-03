@@ -52,4 +52,13 @@ class ListsSuite extends FreeSpec {
       assert(length(List(1, 2, 3)) == 3)
     }
   }
+
+  "reverse()" - {
+    "should return an empty list if it is empty" in {
+      assert(reverse(List()) == List())
+    }
+    "should return the list in reverse order" in {
+      assert(reverse(List(1, 2, 3)) == List(3, 2, 1))
+    }
+  }
 }

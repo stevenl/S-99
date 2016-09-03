@@ -41,4 +41,11 @@ object Lists {
     case _ :: tail => 1 + length(tail)
   }
   def length1[A](list: List[A]): Int = list.length
+
+  // P05 (*) Reverse a list.
+  def reverse[A](list: List[A]): List[A] = list match {
+    case Nil          => Nil
+    case head :: tail => reverse(tail) ::: List(head)
+  }
+  def reverse1[A](list: List[A]): List[A] = list.reverse
 }

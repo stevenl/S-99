@@ -1,7 +1,6 @@
 package s_99
 
 import org.scalatest.FreeSpec
-
 import s_99.Lists._
 
 class ListsSuite extends FreeSpec {
@@ -59,6 +58,18 @@ class ListsSuite extends FreeSpec {
     }
     "should return the list in reverse order" in {
       assert(reverse(List(1, 2, 3)) == List(3, 2, 1))
+    }
+  }
+
+  "isPalindrome()" - {
+    "should return true for an empty list" in {
+      assert(isPalindrome(List()) == true)
+    }
+    "palindrome" in {
+      assert(isPalindrome(List(1, 2, 3, 2, 1)) == true)
+    }
+    "not a palindrome" in {
+      assert(isPalindrome(List(1, 2, 3, 2, 1)) == true)
     }
   }
 }

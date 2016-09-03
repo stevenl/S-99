@@ -48,4 +48,8 @@ object Lists {
     case head :: tail => reverse(tail) ::: List(head)
   }
   def reverse1[A](list: List[A]): List[A] = list.reverse
+
+  // P06 (*) Find out whether a list is a palindrome.
+  def isPalindrome[A](list: List[A]): Boolean = list == reverse(list)
+  def isPalindrome1[A](list: List[A]): Boolean = list == list.reverse
 }

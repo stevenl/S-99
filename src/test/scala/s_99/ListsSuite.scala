@@ -82,4 +82,10 @@ class ListsSuite extends FreeSpec {
       assert(isPalindrome(List(1, 2, 3, 2, 1)) == true)
     }
   }
+
+  "flatten()" - {
+    assert(
+      flatten(List(List(1, 1), 2, List(3, List(5, 8)))) == List(1, 1, 2, 3, 5, 8)
+    )
+  }
 }

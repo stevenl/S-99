@@ -82,4 +82,20 @@ object Lists {
 
     a(list)
   }
+
+  // P07 (**) Flatten a nested list structure.
+  def flatten(list: List[Any]): List[Any] = {
+    def recursive(list: List[Any]): List[Any] = list match {
+      case (head: List[_]) :: tail => recursive(head) ::: recursive(tail)
+      case head :: tail => head :: recursive(tail)
+      case Nil => Nil
+    }
+
+    def flatmap(list: List[Any]): List[Any] = list flatMap {
+      case nested: List[_] => flatmap(nested)
+      case elem => List(elem)
+    }
+
+    flatmap(list)
+  }
 }

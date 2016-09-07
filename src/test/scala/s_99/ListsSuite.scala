@@ -9,7 +9,9 @@ class ListsSuite extends FreeSpec {
       assert(last(List(1, 2, 3, 4, 5)) == 5)
     }
     "should throw when given empty list" in {
-      assertThrows[NoSuchElementException] { last(List()) }
+      assertThrows[NoSuchElementException] {
+        last(List())
+      }
     }
     "should return first element if only one element" in {
       assert(last(List(5)) == 5)
@@ -21,10 +23,14 @@ class ListsSuite extends FreeSpec {
       assert(penultimate(List(1, 2, 3, 4, 5)) == 4)
     }
     "should throw when no elements" in {
-      assertThrows[NoSuchElementException] { penultimate(List()) }
+      assertThrows[NoSuchElementException] {
+        penultimate(List())
+      }
     }
     "should throw when 1 element" in {
-      assertThrows[NoSuchElementException] { penultimate(List(1)) }
+      assertThrows[NoSuchElementException] {
+        penultimate(List(1))
+      }
     }
   }
 
@@ -36,10 +42,14 @@ class ListsSuite extends FreeSpec {
       assert(nth(2, List(1, 2, 3)) == 3)
     }
     "should throw when n is negative" in {
-      assertThrows[NoSuchElementException] { nth(-1, List(1)) }
+      assertThrows[NoSuchElementException] {
+        nth(-1, List(1))
+      }
     }
     "should throw when list is shorter than n - 1" in {
-      assertThrows[NoSuchElementException] { nth(3, List(1, 2, 3)) }
+      assertThrows[NoSuchElementException] {
+        nth(3, List(1, 2, 3))
+      }
     }
   }
 

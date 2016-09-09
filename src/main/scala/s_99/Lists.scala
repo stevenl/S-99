@@ -124,4 +124,40 @@ object Lists {
     }
     foldCompress(list)
   }
+
+  // P09 (**) Pack consecutive duplicates of list elements into sublists.
+  def pack[A](list: List[A]): List[List[A]] = {
+    def accPack[A](list: List[A], acc: List[A]): List[List[A]] = list match {
+      case Nil => Nil
+      case x :: xs => {
+        if (xs.isEmpty)
+          List(x :: acc)
+        else if (x == xs.head)
+          accPack(xs, x :: acc)
+        else
+          List(x :: acc) ::: accPack(xs, Nil)
+      }
+    }
+    //accPack(list, Nil)
+
+    def splitPack[A](list: List[A]): List[List[A]] = {
+      def findSplit[A](list: List[A]): Int = list match {
+        case Nil => 0
+        case x :: xs => {
+          if (xs.isEmpty || xs.head != x)
+            1
+          else
+            1 + findSplit(xs)
+        }
+      }
+
+      val (packed, tail) = list.splitAt(findSplit(list))
+      if (tail.isEmpty)
+        packed :: Nil
+      else
+        packed :: splitPack(tail)
+    }
+    splitPack(list)
+  }
+
 }

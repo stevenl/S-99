@@ -98,4 +98,17 @@ object Lists {
 
     flatmap(list)
   }
+
+  // P08 (**) Eliminate consecutive duplicates of list elements.
+  def compress[A](list: List[A]): List[A] = {
+    def recursive[A](list: List[A]): List[A] = list match {
+      case head :: tail =>
+        if (tail.isEmpty) List(head)
+        else if (head == tail.head) recursive(tail)
+        else head :: recursive(tail)
+      case Nil => Nil
+    }
+
+    recursive(list)
+  }
 }

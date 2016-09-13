@@ -160,4 +160,8 @@ object Lists {
     splitPack(list)
   }
 
+  // P10 (*) Run-length encoding of a list.
+  def encode[A](list: List[A]): List[(Int, A)] = {
+    for (p <- pack(list)) yield (p.length, p.head)
+  }
 }

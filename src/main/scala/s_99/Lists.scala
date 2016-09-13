@@ -164,4 +164,14 @@ object Lists {
   def encode[A](list: List[A]): List[(Int, A)] = {
     for (p <- pack(list)) yield (p.length, p.head)
   }
+
+  // P11 (*) Modified run-length encoding.
+  def encodeModified[A](list: List[A]): List[Any] = {
+    for (p <- pack(list)) yield {
+       if (p.length > 1)
+         (p.length, p.head)
+       else
+         p.head
+    }
+  }
 }

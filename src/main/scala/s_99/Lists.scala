@@ -101,14 +101,27 @@ object Lists {
 
   // P08 (**) Eliminate consecutive duplicates of list elements.
   def compress[A](list: List[A]): List[A] = {
-    def recursive[A](list: List[A]): List[A] = list match {
-      case head :: tail =>
-        if (tail.isEmpty) List(head)
-        else if (head == tail.head) recursive(tail)
-        else head :: recursive(tail)
+    def recursiveCompress[A](list: List[A]): List[A] = list match {
       case Nil => Nil
+      case x :: xs => {
+        if (xs.isEmpty)
+          List(x)
+        else if (x == xs.head)
+          recursiveCompress(xs)
+        else
+          x :: recursiveCompress(xs)
+      }
     }
+    //recursiveCompress(list)
 
-    recursive(list)
+    def foldCompress[A](list: List[A]): List[A] = list.foldRight(List[A]()) {
+      (x, z) => {
+        if (z.isEmpty || x != z.head)
+          x :: z
+        else
+          z
+      }
+    }
+    foldCompress(list)
   }
 }

@@ -174,4 +174,10 @@ object Lists {
          p.head
     }
   }
+
+  // P12 (**) Decode a run-length encoded list.
+  def decode[A](list: List[(Int, A)]): List[A] = {
+    def repeat(n: Int, x: A): List[A] = (for (i <- 1 to n) yield x).toList
+    list flatMap { x => repeat(x._1, x._2) }
+  }
 }

@@ -243,4 +243,16 @@ object Lists {
     else
       Nil
   }
+
+  // P19 (**) Rotate a list N places to the left.
+  def rotate[A](n: Int, list: List[A]): List[A] = {
+    if (n < 0)
+      rotate(n + list.length, list)
+    else if (n >= list.length)
+      rotate(n - list.length, list)
+    else {
+      var (left, right) = split(n, list)
+      right ::: left
+    }
+  }
 }

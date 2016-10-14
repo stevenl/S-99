@@ -163,4 +163,31 @@ class ListsSuite extends FreeSpec {
       slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) == List('d, 'e, 'f, 'g)
     )
   }
+
+  "rotate()" - {
+    "positive N" in {
+      assert(
+        rotate(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ==
+          List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c)
+      )
+    }
+    "negative N" in {
+      assert(
+        rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ==
+          List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)
+      )
+    }
+    "N equal to length" in {
+      assert(
+        rotate(11, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ==
+          List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
+      )
+    }
+    "N greater than length" in {
+      assert(
+        rotate(13, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ==
+          List('c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b)
+      )
+    }
+  }
 }

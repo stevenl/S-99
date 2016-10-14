@@ -150,4 +150,11 @@ class ListsSuite extends FreeSpec {
         List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
     )
   }
+
+  "split()" - {
+    assert(
+      split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ==
+        (List('a, 'b, 'c), List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+    )
+  }
 }

@@ -219,4 +219,18 @@ object Lists {
     }
     dropi(n, list)
   }
+
+  // P17 (*) Split a list into two parts.
+  def split[A](i: Int, list: List[A]): (List[A], List[A]) = list match {
+    case Nil =>
+      (Nil, Nil)
+    case x :: xs => {
+      if (i == 0)
+        (Nil, list)
+      else {
+        var (l1, l2) = split(i - 1, xs)
+        (x :: l1, l2)
+      }
+    }
+  }
 }

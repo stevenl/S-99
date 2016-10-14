@@ -201,4 +201,8 @@ object Lists {
     case Nil => Nil
     case x :: xs => x :: x :: duplicate(xs)
   }
+
+  // P15 (**) Duplicate the elements of a list a given number of times.
+  def duplicateN[A](n: Int, list: List[A]): List[A] =
+    list flatMap { for (i <- 1 to n) yield _ }
 }

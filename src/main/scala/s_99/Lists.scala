@@ -195,4 +195,10 @@ object Lists {
       }
     }
   }
+
+  // P14 (*) Duplicate the elements of a list.
+  def duplicate[A](list: List[A]): List[A] = list match {
+    case Nil => Nil
+    case x :: xs => x :: x :: duplicate(xs)
+  }
 }

@@ -130,4 +130,10 @@ class ListsSuite extends FreeSpec {
         List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e))
     )
   }
+
+  "duplicate()" - {
+    assert(
+      duplicate(List('a, 'b, 'c, 'c, 'd)) == List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd)
+    )
+  }
 }

@@ -180,4 +180,19 @@ object Lists {
     def repeat(n: Int, x: A): List[A] = (for (i <- 1 to n) yield x).toList
     list flatMap { x => repeat(x._1, x._2) }
   }
+
+  // P13 (**) Run-length encoding of a list (direct solution).
+  def encodeDirect[A](list: List[A]): List[(Int, A)] = {
+    list.foldRight(List[(Int, A)]()) {
+      (x, z) => z match {
+        case Nil =>
+          (1, x) :: Nil
+        case head :: tail =>
+          if (x == head._2)
+            (head._1 + 1, x) :: tail
+          else
+            (1, x) :: z
+      }
+    }
+  }
 }

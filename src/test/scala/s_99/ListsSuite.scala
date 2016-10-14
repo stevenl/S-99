@@ -143,4 +143,11 @@ class ListsSuite extends FreeSpec {
         List('a, 'a, 'a, 'b, 'b, 'b, 'c, 'c, 'c, 'c, 'c, 'c, 'd, 'd, 'd)
     )
   }
+
+  "drop()" - {
+    assert(
+      drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ==
+        List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
+    )
+  }
 }

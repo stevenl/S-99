@@ -205,4 +205,18 @@ object Lists {
   // P15 (**) Duplicate the elements of a list a given number of times.
   def duplicateN[A](n: Int, list: List[A]): List[A] =
     list flatMap { for (i <- 1 to n) yield _ }
+
+  // P16 (**) Drop every Nth element from a list.
+  def drop[A](n: Int, list: List[A]): List[A] = {
+    def dropi(i: Int, list: List[A]): List[A] = list match {
+      case Nil => Nil
+      case x :: xs => {
+        if (i > 1)
+          x :: dropi(i - 1, xs)
+        else
+          dropi(n, xs)
+      }
+    }
+    dropi(n, list)
+  }
 }

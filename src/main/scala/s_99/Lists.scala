@@ -233,4 +233,14 @@ object Lists {
       }
     }
   }
+
+  // P18 (**) Extract a slice from a list.
+  def slice[A](i: Int, k: Int, list: List[A]): List[A] = {
+    if (i > 0)
+      slice(i - 1, k - 1, list.tail)
+    else if (k > 0)
+      list.head :: slice(i, k - 1, list.tail)
+    else
+      Nil
+  }
 }

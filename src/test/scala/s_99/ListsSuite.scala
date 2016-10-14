@@ -157,4 +157,10 @@ class ListsSuite extends FreeSpec {
         (List('a, 'b, 'c), List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
     )
   }
+
+  "slice()" - {
+    assert(
+      slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) == List('d, 'e, 'f, 'g)
+    )
+  }
 }

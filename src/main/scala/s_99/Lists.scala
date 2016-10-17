@@ -277,4 +277,11 @@ object Lists {
     else
       list.head :: insertAt(x, i - 1, list.tail)
   }
+
+  // P22 (*) Create a list containing all integers within a given range.
+  def range(start: Int, end: Int): List[Int] = {
+    if (start > end)
+      throw new IllegalArgumentException
+    (for (i <- start to end) yield i).toList
+  }
 }

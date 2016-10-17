@@ -198,4 +198,16 @@ class ListsSuite extends FreeSpec {
   "insertAt()" - {
     assert(insertAt('new, 1, List('a, 'b, 'c, 'd)) == List('a, 'new, 'b, 'c, 'd))
   }
+
+  "range()" - {
+    "Invalid arguments" in {
+      assertThrows[IllegalArgumentException] { range(9, 4) }
+    }
+    "equal arguments" in {
+      assert(range(4, 4) == List(4))
+    }
+    "normal" in {
+      assert(range(4, 9) == List(4, 5, 6, 7, 8, 9))
+    }
+  }
 }

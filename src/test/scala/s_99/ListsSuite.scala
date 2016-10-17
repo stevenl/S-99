@@ -190,4 +190,8 @@ class ListsSuite extends FreeSpec {
       )
     }
   }
+
+  "removeAt()" - {
+    assert(removeAt(1, List('a, 'b, 'c, 'd)) == (List('a, 'c, 'd ), 'b))
+  }
 }

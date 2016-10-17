@@ -255,4 +255,16 @@ object Lists {
       right ::: left
     }
   }
+
+  // P20 (*) Remove the Kth element from a list.
+  def removeAt[A](i: Int, list: List[A]): (List[A], A) = {
+    if (i < 0 || list.isEmpty)
+      throw new NoSuchElementException
+    if (i == 0)
+      (list.tail, list.head)
+    else {
+      var (ls, x) = removeAt(i - 1, list.tail)
+      (list.head :: ls, x)
+    }
+  }
 }

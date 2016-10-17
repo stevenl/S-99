@@ -215,4 +215,9 @@ class ListsSuite extends FreeSpec {
     var result = randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h ))
     assert(result.length == 3 && result.toSet.subsetOf(Set('a, 'b, 'c, 'd, 'f, 'g, 'h )))
   }
+
+  "lotto()" - {
+    var result = lotto(6, 49)
+    assert(result.length == 6 && result.forall(_ <= 49))
+  }
 }

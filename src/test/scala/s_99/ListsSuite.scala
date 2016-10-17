@@ -210,4 +210,9 @@ class ListsSuite extends FreeSpec {
       assert(range(4, 9) == List(4, 5, 6, 7, 8, 9))
     }
   }
+
+  "randomSelect()" - {
+    var result = randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h ))
+    assert(result.length == 3 && result.toSet.subsetOf(Set('a, 'b, 'c, 'd, 'f, 'g, 'h )))
+  }
 }

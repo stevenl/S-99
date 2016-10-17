@@ -1,5 +1,7 @@
 package s_99
 
+import scala.util.Random
+
 object Lists {
   // P01 (*) Find the last element of a list
   def last[A](list: List[A]): A = {
@@ -283,5 +285,17 @@ object Lists {
     if (start > end)
       throw new IllegalArgumentException
     (for (i <- start to end) yield i).toList
+  }
+
+  // P23 (**) Extract a given number of randomly selected elements from a list.
+  def randomSelect[A](i: Int, list: List[A]): List[A] = {
+    if (i < 0)
+      throw new IllegalArgumentException
+    if (i == 0)
+      Nil
+    else {
+      var (ls, x) = removeAt(Random.nextInt(list.length), list)
+      x :: randomSelect(i - 1, ls)
+    }
   }
 }

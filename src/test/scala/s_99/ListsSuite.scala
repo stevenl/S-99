@@ -194,4 +194,8 @@ class ListsSuite extends FreeSpec {
   "removeAt()" - {
     assert(removeAt(1, List('a, 'b, 'c, 'd)) == (List('a, 'c, 'd ), 'b))
   }
+
+  "insertAt()" - {
+    assert(insertAt('new, 1, List('a, 'b, 'c, 'd)) == List('a, 'new, 'b, 'c, 'd))
+  }
 }

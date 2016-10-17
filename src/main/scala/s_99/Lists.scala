@@ -267,4 +267,14 @@ object Lists {
       (list.head :: ls, x)
     }
   }
+
+  // P21 (*) Insert an element at a given position into a list.
+  def insertAt[A](x: A, i: Int, list: List[A]): List[A] = {
+    if (i < 0 || list.isEmpty)
+      throw new NoSuchElementException
+    if (i == 0)
+      x :: list
+    else
+      list.head :: insertAt(x, i - 1, list.tail)
+  }
 }

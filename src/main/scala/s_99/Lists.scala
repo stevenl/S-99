@@ -301,4 +301,7 @@ object Lists {
 
   // P24 (*) Lotto: Draw N different random numbers from the set 1..M.
   def lotto(n: Int, m: Int): List[Int] = randomSelect(n, (1 to m).toList)
+
+  // P25 (*) Generate a random permutation of the elements of a list.
+  def randomPermute[A](list: List[A]): List[A] = randomSelect(list.length, list)
 }

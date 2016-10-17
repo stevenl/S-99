@@ -220,4 +220,10 @@ class ListsSuite extends FreeSpec {
     var result = lotto(6, 49)
     assert(result.length == 6 && result.forall(_ <= 49))
   }
+
+  "randomPermute()" - {
+    var input = List('a, 'b, 'c, 'd, 'e, 'f)
+    var result = randomPermute(input)
+    assert(result.length == 6 && result != input && result.toSet == input.toSet)
+  }
 }

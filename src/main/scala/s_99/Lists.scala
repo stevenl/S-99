@@ -230,7 +230,7 @@ object Lists {
       if (i == 0)
         (Nil, list)
       else {
-        var (l1, l2) = split(i - 1, xs)
+        val (l1, l2) = split(i - 1, xs)
         (x :: l1, l2)
       }
     }
@@ -253,7 +253,7 @@ object Lists {
     else if (n >= list.length)
       rotate(n - list.length, list)
     else {
-      var (left, right) = split(n, list)
+      val (left, right) = split(n, list)
       right ::: left
     }
   }
@@ -265,7 +265,7 @@ object Lists {
     if (i == 0)
       (list.tail, list.head)
     else {
-      var (ls, x) = removeAt(i - 1, list.tail)
+      val (ls, x) = removeAt(i - 1, list.tail)
       (list.head :: ls, x)
     }
   }
@@ -294,7 +294,7 @@ object Lists {
     if (i == 0)
       Nil
     else {
-      var (ls, x) = removeAt(Random.nextInt(list.length), list)
+      val (ls, x) = removeAt(Random.nextInt(list.length), list)
       x :: randomSelect(i - 1, ls)
     }
   }

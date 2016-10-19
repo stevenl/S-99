@@ -304,4 +304,16 @@ object Lists {
 
   // P25 (*) Generate a random permutation of the elements of a list.
   def randomPermute[A](list: List[A]): List[A] = randomSelect(list.length, list)
+
+  // P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a list.
+  def combinations[A](n: Int, list: List[A]): List[List[A]] = {
+    if (n < 0)
+      throw new IllegalArgumentException
+    if (n > list.length)
+      List()
+    else if (n == 0)
+      List(Nil)
+    else
+      (combinations(n - 1, list.tail) map {list.head :: _}) ::: combinations(n, list.tail)
+  }
 }

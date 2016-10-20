@@ -358,4 +358,31 @@ object Lists {
         }
       }
   }
+
+  // P28 (**) Sorting a list of lists according to length of sublists (part A).
+  def lsort[A](list: List[List[A]]): List[List[A]] = {
+    def lsortBuiltin(list: List[List[A]]): List[List[A]] = list.sortBy(_.length)
+
+    def lsortSelection(list: List[List[A]]): List[List[A]] = {
+      def shortest(list: List[List[A]], short: List[A]): List[A] = list match {
+        case Nil =>
+          short
+        case x :: xs =>
+          if (x.length < short.length)
+            shortest(xs, x)
+          else
+            shortest(xs, short)
+      }
+
+      list match {
+        case Nil => Nil
+        case x :: xs =>
+          val short = shortest(xs, x)
+          val (long, short1) = removeAt(list.indexOf(short), list)
+          short :: lsort(long)
+      }
+    }
+
+    lsortSelection(list)
+  }
 }

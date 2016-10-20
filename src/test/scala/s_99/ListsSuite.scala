@@ -239,4 +239,26 @@ class ListsSuite extends FreeSpec {
         )
     )
   }
+
+  "group()" - {
+    "simple" in {
+      assert(
+        group(List(2, 2), List("Aldo", "Beat", "Carla", "David")) ==
+          List(
+            List(List("Aldo", "Beat"), List("Carla", "David")),
+            List(List("Aldo", "Carla"), List("Beat", "David")),
+            List(List("Aldo", "David"), List("Beat", "Carla")),
+            List(List("Beat", "Carla"), List("Aldo", "David")),
+            List(List("Beat", "David"), List("Aldo", "Carla")),
+            List(List("Carla", "David"), List("Aldo", "Beat"))
+          )
+      )
+    }
+    "group3" in {
+      assert(
+        group3(List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) ==
+          group(List(2, 3, 4), List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"))
+      )
+    }
+  }
 }

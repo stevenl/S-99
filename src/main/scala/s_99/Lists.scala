@@ -316,4 +316,46 @@ object Lists {
     else
       (combinations(n - 1, list.tail) map {list.head :: _}) ::: combinations(n, list.tail)
   }
+
+  // P27 (**) Group the elements of a set into disjoint subsets (part A).
+  def group3[A](list: List[A]): List[List[List[A]]] = {
+    def group3WithFor(list: List[A]): List[List[List[A]]] = {
+      for {
+        x <- combinations(2, list)
+        val minusX = list.diff(x)
+        y <- combinations(3, minusX)
+        val minusY = minusX.diff(y)
+        z <- combinations(4, minusY) // this line is redundant but clearer
+      } yield List(x, y, z)
+    }
+
+    def group3Recursive(list: List[A]): List[List[List[A]]] = {
+      combinations(2, list) flatMap { x =>
+        val minusX = list.diff(x)
+        val subgroupsY = combinations(3, minusX) flatMap { y =>
+          val minusY = minusX.diff(y)
+          val subgroupsZ = combinations(4, minusY) map { z => List(z) }
+          subgroupsZ map (y :: _)
+        }
+        subgroupsY map (x :: _)
+      }
+    }
+
+    //group3WithFor(list)
+    group3Recursive(list)
+  }
+
+  // P27 (**) Group the elements of a set into disjoint subsets (part B).
+  def group[A](groupSizes: List[Int], list: List[A]): List[List[List[A]]] = {
+    if (groupSizes.isEmpty)
+      List(Nil)
+    else
+      combinations(groupSizes.head, list) flatMap {
+        x => {
+          val listMinusX = list.diff(x)
+          val subgroups = group(groupSizes.tail, listMinusX)
+          subgroups map (x :: _)
+        }
+      }
+  }
 }

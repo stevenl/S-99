@@ -373,13 +373,20 @@ object Lists {
           else
             shortest(xs, short)
       }
+      def remove(x: List[A], list: List[List[A]]): List[List[A]] = {
+        if (list.isEmpty)
+          list
+        else if (x == list.head)
+          list.tail
+        else
+          list.head :: remove(x, list.tail)
+      }
 
       list match {
         case Nil => Nil
         case x :: xs =>
           val short = shortest(xs, x)
-          val (long, short1) = removeAt(list.indexOf(short), list)
-          short :: lsort(long)
+          short :: lsort(remove(short, list))
       }
     }
 

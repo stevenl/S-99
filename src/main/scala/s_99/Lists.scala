@@ -392,4 +392,14 @@ object Lists {
 
     lsortSelection(list)
   }
+
+  // P28 (**) Sorting a list of lists according to length frequency of sublists (part B).
+  def lsortFreq[A](list: List[List[A]]): List[List[A]] = {
+    def lsortFreqBuiltin(list: List[List[A]]): List[List[A]] = {
+      val groupedByLength = list.groupBy(_.length)
+      groupedByLength.values.toList.sortBy(_.length).flatten
+    }
+
+    lsortFreqBuiltin(list)
+  }
 }
